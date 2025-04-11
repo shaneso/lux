@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     height: 150,
-    borderColor: "none",
   },
   tabBarLabel: {
     marginTop: 50,

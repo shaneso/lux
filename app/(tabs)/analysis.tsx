@@ -1,7 +1,7 @@
 import { View, StyleSheet, FlatList, Dimensions } from "react-native";
 
-import Compute from "../components/compute";
-import Graph from "../components/graph";
+import Compute from "../components/features";
+import Graph from "../components/flow";
 import NotFound from "../+not-found";
 
 const { height } = Dimensions.get("window");

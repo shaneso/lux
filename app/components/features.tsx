@@ -5,6 +5,7 @@ export default function Compute() {
   const [text, setText] = useState("");
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>Features</Text>
       <TextInput
         style={styles.textInput}
         placeholder="Type here"
@@ -26,7 +27,8 @@ const styles = StyleSheet.create({
   title: {
     color: "#000000",
     fontWeight: "500",
-    fontSize: 40,
+    fontSize: 30,
+    padding: 10,
   },
   boldText: {
     color: "#000000",
@@ -47,8 +49,7 @@ const styles = StyleSheet.create({
     padding: 5,
     textAlign: "center",
     borderWidth: 0.2,
-    borderRadius: 10,
+    borderRadius: 5,
     borderColor: "#727285",
-    paddingLeft: 10,
   },
 });

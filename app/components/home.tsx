@@ -4,8 +4,6 @@ export default function Home() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Lux</Text>
-      <Text style={styles.boldText}></Text>
-      <Text style={styles.boldText}>Illuminate metastasis growth trends</Text>
       <Text style={styles.text}>Computational tools for tumor analysis</Text>
     </View>
   );
@@ -23,6 +21,7 @@ const styles = StyleSheet.create({
     color: "#000000",
     fontWeight: "500",
     fontSize: 40,
+    padding: 10,
   },
   boldText: {
     color: "#000000",
