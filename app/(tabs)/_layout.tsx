@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     borderColor: "none",
   },
   tabBarLabel: {
-    padding: 50,
+    marginTop: 50,
     fontSize: 15,
   },
 });
