@@ -11,7 +11,7 @@ export default function RootLayout() {
         tabBarActiveTintColor: "#000000",
         tabBarInactiveTintColor: "#727285",
         tabBarBackground: () => (
-          <BlurView tint="light" intensity={80} style={StyleSheet.absoluteFill} />
+          <BlurView tint="light" intensity={100} style={StyleSheet.absoluteFill} />
         ),
       }}
     >
