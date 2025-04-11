@@ -1,10 +1,10 @@
-import { Text, View, StyleSheet, FlatList, Dimensions } from "react-native";
-
-const { height } = Dimensions.get("window");
+import { View, StyleSheet, FlatList, Dimensions } from "react-native";
 
 import Home from "../components/home";
 import About from "../components/about";
 import NotFound from "../+not-found";
+
+const { height } = Dimensions.get("window");
 
 const data = [
   { id: "1", title: "Home", type: "home" },
