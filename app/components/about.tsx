@@ -7,7 +7,7 @@ export default function About() {
     <View style={styles.container}>
       <Text style={styles.boldText}>An Illuminate series project</Text>
       <Text style={styles.text}>Developed by Shane So</Text>
-      <Link href={"https://github.com/shaneso/lux"} style={styles.footer} onPress={() => Haptics.selectionAsync()}>Learn more about Lux</Link>
+      <Link href={"https://github.com/shaneso/lux"} style={styles.footer} onPress={() => Haptics.selectionAsync()}>Learn more</Link>
     </View>
   );
 }
@@ -31,12 +31,18 @@ const styles = StyleSheet.create({
     fontSize: 15,
     padding: 10,
   },
+  link: {
+    marginTop: 20,
+    marginBottom: 120,
+    color: "#000000",
+    fontWeight: "300",
+    fontSize: 15,
+  },
   footer: {
     position: "absolute",
     bottom: 0,
     marginBottom: 120,
     color: "#000000",
-    backgroundColor: "#ffffff",
     fontWeight: "300",
     fontSize: 15,
   },
