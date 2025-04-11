@@ -1,11 +1,12 @@
 import { Text, View, StyleSheet } from "react-native";
 import { Link } from "expo-router";
+import * as Haptics from "expo-haptics";
 
 export default function NotFound() {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Page not found</Text>
-      <Link href={"/"} style={styles.link}>Go back home</Link>
+      <Link href={"./(tabs)"} style={styles.link} onPress={() => Haptics.selectionAsync()}>Go back home</Link>
     </View>
   );
 }
@@ -20,6 +21,9 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "#000000",
+    fontWeight: "500",
+    fontSize: 20,
+    textAlign: "center",
   },
   link: {
     color: "#000000",

@@ -1,9 +1,9 @@
 import { Text, View, StyleSheet } from "react-native";
 
-export default function About() {
+export default function Analysis() {
   return (
     <View style={styles.container}>
-      <Text style={styles.boldText}>Learn more about Lux</Text>
+      <Text style={styles.boldText}>Analysis</Text>
     </View>
   );
 }
@@ -17,12 +17,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   boldText: {
-    color: "#000000",
+    color: "#ffffff",
     fontWeight: "500",
     fontSize: 20,
   },
   description: {
-    color: "#000000",
+    color: "#ffffff",
     fontWeight: "300",
     fontSize: 15,
   },

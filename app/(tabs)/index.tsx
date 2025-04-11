@@ -4,7 +4,7 @@ const { height } = Dimensions.get("window");
 
 import Home from "../components/home";
 import About from "../components/about";
-import NotFound from "./+not-found";
+import NotFound from "../+not-found";
 
 const data = [
   { id: "1", title: "Home", type: "home" },
@@ -27,9 +27,6 @@ export default function Index() {
           <View style={styles.container}>
             { PageComponent ? <PageComponent /> : <NotFound /> }
           </View>
-          // <View style={styles.container}>
-          //   <Text style={styles.boldText}>Welcome to Lux</Text>
-          // </View>
         );
       }}
       pagingEnabled
