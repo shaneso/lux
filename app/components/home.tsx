@@ -4,7 +4,8 @@ export default function Home() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Lux</Text>
-      <Text style={styles.boldText}>Illuminate metastasis growth</Text>
+      <Text style={styles.boldText}></Text>
+      <Text style={styles.boldText}>Illuminate metastasis growth trends</Text>
       <Text style={styles.text}>Computational tools for tumor analysis</Text>
     </View>
   );
@@ -22,19 +23,17 @@ const styles = StyleSheet.create({
     color: "#000000",
     fontWeight: "500",
     fontSize: 40,
-    padding: 5,
   },
   boldText: {
     color: "#000000",
     fontWeight: "500",
     fontSize: 20,
     textAlign: "center",
-    padding: 5,
   },
   text: {
     color: "#000000",
     fontWeight: "300",
     fontSize: 15,
-    padding: 5,
+    padding: 10,
   },
 });
