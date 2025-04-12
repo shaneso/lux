@@ -35,14 +35,20 @@ const pageMap: Record<string, React.FC> = {
   flow: Flow,
 };
 
+// Analysis page component function
+
 export default function Analysis() {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const flatListRef = useRef<FlatList>(null);
+
+// Handles index scroll settings
 
   const scrollToIndex = (index: number) => {
     flatListRef.current?.scrollToIndex({ index, animated: true, viewPosition: 0 });
     setActiveIndex(index);
   };
+
+// Handle scroll and offset
 
   const scrollHandler = (event: any) => {
     const offsetX = event.nativeEvent.contentOffset.x;
@@ -50,12 +56,14 @@ export default function Analysis() {
     setActiveIndex(currentIndex);
   };
 
+// Return components
+
   return (
     <View style={styles.container}>
       <View style={styles.tabBar}>
         {data.map((item, index) => (
+
           <TouchableOpacity
-          <BlurView tint="light" intensity={100} style={StyleSheet.absoluteFill} />
             key={item.id}
             style={[
               styles.tabItem,
@@ -65,8 +73,10 @@ export default function Analysis() {
           >
             <Text style={styles.tabText}>{item.title}</Text>
           </TouchableOpacity>
+
         ))}
       </View>
+
       <FlatList
         onScroll={scrollHandler}
         scrollEventThrottle={16}
@@ -93,6 +103,8 @@ export default function Analysis() {
     </View>
   );
 }
+
+// Styling
 
 const styles = StyleSheet.create({
   container: {

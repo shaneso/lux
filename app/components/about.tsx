@@ -1,6 +1,10 @@
+// Import statements
+
 import { Text, View, StyleSheet } from "react-native";
 import { Link } from "expo-router";
 import * as Haptics from "expo-haptics";
+
+// About page component function
 
 export default function About() {
   return (
@@ -11,6 +15,8 @@ export default function About() {
     </View>
   );
 }
+
+// Styling
 
 const styles = StyleSheet.create({
   container: {

@@ -1,7 +1,11 @@
+// Import statements
+
 import { Text, TextInput, View, StyleSheet } from "react-native";
 import React, {useState} from "react";
 
-export default function Compute() {
+// Features page component function
+
+export default function Features() {
   const [text, setText] = useState("");
   return (
     <View style={styles.container}>
@@ -15,6 +19,8 @@ export default function Compute() {
     </View>
   );
 }
+
+// Styling
 
 const styles = StyleSheet.create({
   container: {

@@ -1,13 +1,18 @@
+// Import statements
+
 import { Text, View, StyleSheet } from "react-native";
 
-export default function Graph() {
+// Flow page component function
+
+export default function Flow() {
   return (
     <View style={styles.container}>
       <Text style={styles.headerTitle}>Flow</Text>
-      <Text style={styles.text}>Computational tools for tumor analysis</Text>
     </View>
   );
 }
+
+// Styling
 
 const styles = StyleSheet.create({
   container: {

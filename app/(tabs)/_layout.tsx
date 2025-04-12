@@ -1,7 +1,11 @@
+// Import statements
+
 import { StyleSheet } from "react-native";
 import { Tabs } from "expo-router";
 import * as Haptics from "expo-haptics";
 import { BlurView } from "expo-blur";
+
+// Root layout for home and analysis tabs
 
 export default function RootLayout() {
   return (
@@ -43,6 +47,8 @@ export default function RootLayout() {
     </Tabs>
   );
 }
+
+// Styling
 
 const styles = StyleSheet.create({
   tabBar: {

@@ -1,4 +1,8 @@
+// Import statements
+
 import { Text, View, StyleSheet } from "react-native";
+
+// Home page component function
 
 export default function Home() {
   return (
@@ -8,6 +12,8 @@ export default function Home() {
     </View>
   );
 }
+
+// Styling
 
 const styles = StyleSheet.create({
   container: {

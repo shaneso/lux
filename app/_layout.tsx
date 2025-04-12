@@ -1,6 +1,10 @@
+// Import statements
+
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+
+// Root layout for main tabs
 
 export default function RootLayout() {
   return (
