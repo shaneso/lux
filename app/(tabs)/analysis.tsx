@@ -9,11 +9,13 @@ import {
   Dimensions,
 } from "react-native";
 import React, {useRef, useState} from "react";
+import * as Haptics from "expo-haptics";
 
 // Import page components
 
 import Features from "../components/features";
 import Flow from "../components/flow";
+import Regression from "../components/regression";
 import NotFound from "../+not-found";
 
 // Variables storing device dimensions
@@ -25,13 +27,15 @@ const { width } = Dimensions.get("window");
 
 const data = [
   { id: "1", title: "Features", type: "features" },
-  { id: "2", title: "Flow", type: "flow" },
+  { id: "2", title: "Regression", type: "regression" },
+  { id: "3", title: "Flow", type: "flow" },
 ];
 
 // Page mapping
 
 const pageMap: Record<string, React.FC> = {
   features: Features,
+  regression: Regression,
   flow: Flow,
 };
 
@@ -60,22 +64,28 @@ export default function Analysis() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.tabBar}>
+      <View style={styles.pageTitleContainer}>
+        <Text style={styles.headerTitle}>
+          {data[activeIndex]?.title}
+        </Text>
+      </View>
+      {/* <View style={styles.tabBar}>
         {data.map((item, index) => (
-
           <TouchableOpacity
             key={item.id}
             style={[
               styles.tabItem,
               index === activeIndex && styles.activeTab,
             ]}
-            onPress={() => scrollToIndex(index)}
+            onPress={() => {
+              Haptics.selectionAsync();
+              scrollToIndex(index);
+            }}
           >
             <Text style={styles.tabText}>{item.title}</Text>
           </TouchableOpacity>
-
         ))}
-      </View>
+      </View> */}
 
       <FlatList
         onScroll={scrollHandler}
@@ -114,6 +124,23 @@ const styles = StyleSheet.create({
     color: "#000000",
     backgroundColor: "#ffffff",
   },
+  pageTitleContainer: {
+    position: "absolute",
+    bottom: 0,
+    textAlign: "center",
+    justifyContent: "center",
+    alignItems: "center",
+    height: 50,
+    width,
+    backgroundColor: "#ffffff",
+    zIndex: 1,
+    marginBottom: 120,
+  },  
+  headerTitle: {
+    color: "#000000",
+    fontWeight: "500",
+    fontSize: 15,
+  },
   boldText: {
     textAlign: "center",
     color: "#000000",
@@ -123,23 +150,16 @@ const styles = StyleSheet.create({
   tabBar: {
     position: "absolute",
     bottom: 0,
-    width: "100%",
-    height: 120,
+    width,
+    height: 70,
     flexDirection: "row",
     zIndex: 1,
     backgroundColor: "#ffffff",
-    marginTop: 200,
-    paddingVertical: 30,
   },
+  activeTab: {},
   tabItem: {
     flex: 1,
     alignItems: "center",
-    color: "#727285",
-    borderBottomColor: "transparent",
-  },
-  activeTab: {
-    color: "#000000",
-    borderBottomColor: "transparent",
   },
   tabText: {
     fontSize: 15,
