@@ -24,8 +24,8 @@ const { width } = Dimensions.get("window");
 // Key id mapping for each page
 
 const data = [
-  { id: "1", title: "", type: "features" },
-  { id: "2", title: "", type: "flow" },
+  { id: "1", title: "Features", type: "features" },
+  { id: "2", title: "Flow", type: "flow" },
 ];
 
 // Page mapping
@@ -55,6 +55,7 @@ export default function Analysis() {
       <View style={styles.tabBar}>
         {data.map((item, index) => (
           <TouchableOpacity
+          <BlurView tint="light" intensity={100} style={StyleSheet.absoluteFill} />
             key={item.id}
             style={[
               styles.tabItem,
@@ -97,6 +98,7 @@ const styles = StyleSheet.create({
   container: {
     height,
     width,
+    flex: 1,
     color: "#000000",
     backgroundColor: "#ffffff",
   },
@@ -107,21 +109,25 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   tabBar: {
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
+    height: 120,
     flexDirection: "row",
-    backgroundColor: "#000000",
-    // position: "absolute",
-    // bottom: 0,
+    zIndex: 1,
+    backgroundColor: "#ffffff",
     marginTop: 200,
+    paddingVertical: 30,
   },
   tabItem: {
     flex: 1,
-    // paddingVertical: 12,
     alignItems: "center",
-    borderBottomWidth: 2,
+    color: "#727285",
     borderBottomColor: "transparent",
   },
   activeTab: {
-    borderBottomColor: "#000000",
+    color: "#000000",
+    borderBottomColor: "transparent",
   },
   tabText: {
     fontSize: 15,

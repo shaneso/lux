@@ -6,7 +6,6 @@ export default function Compute() {
   return (
     <View style={styles.container}>
       <Text style={styles.headerTitle}>Features</Text>
-      <Text style={styles.text}>Computational tools for tumor analysis</Text>
       <TextInput
         style={styles.textInput}
         placeholder="Type here"
@@ -25,6 +24,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     justifyContent: "center",
     alignItems: "center",
+    padding: 30,
   },
   headerTitle: {
     position: "absolute",
