@@ -9,7 +9,6 @@ export default function Features() {
   const [text, setText] = useState("");
   return (
     <View style={styles.container}>
-      <Text style={styles.headerTitle}>Features</Text>
       <TextInput
         style={styles.textInput}
         placeholder="Type here"

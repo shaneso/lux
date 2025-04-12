@@ -37,13 +37,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     padding: 10,
   },
-  link: {
-    marginTop: 20,
-    marginBottom: 120,
-    color: "#000000",
-    fontWeight: "300",
-    fontSize: 15,
-  },
   footer: {
     position: "absolute",
     bottom: 0,

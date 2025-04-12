@@ -3,13 +3,11 @@
 import {
   View,
   StyleSheet,
-  TouchableOpacity,
   Text,
   FlatList,
   Dimensions,
 } from "react-native";
 import React, {useRef, useState} from "react";
-import * as Haptics from "expo-haptics";
 
 // Import page components
 
@@ -45,13 +43,6 @@ export default function Analysis() {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const flatListRef = useRef<FlatList>(null);
 
-// Handles index scroll settings
-
-  const scrollToIndex = (index: number) => {
-    flatListRef.current?.scrollToIndex({ index, animated: true, viewPosition: 0 });
-    setActiveIndex(index);
-  };
-
 // Handle scroll and offset
 
   const scrollHandler = (event: any) => {
@@ -64,28 +55,16 @@ export default function Analysis() {
 
   return (
     <View style={styles.container}>
+
+      {/* Current page title view */}
+
       <View style={styles.pageTitleContainer}>
-        <Text style={styles.headerTitle}>
+        <Text style={styles.pageTitle}>
           {data[activeIndex]?.title}
         </Text>
       </View>
-      {/* <View style={styles.tabBar}>
-        {data.map((item, index) => (
-          <TouchableOpacity
-            key={item.id}
-            style={[
-              styles.tabItem,
-              index === activeIndex && styles.activeTab,
-            ]}
-            onPress={() => {
-              Haptics.selectionAsync();
-              scrollToIndex(index);
-            }}
-          >
-            <Text style={styles.tabText}>{item.title}</Text>
-          </TouchableOpacity>
-        ))}
-      </View> */}
+
+      {/* FlatList component */}
 
       <FlatList
         onScroll={scrollHandler}
@@ -97,11 +76,12 @@ export default function Analysis() {
         renderItem={({ item }) => {
           const PageComponent = pageMap[item.type];
           return (
-            <View style={styles.container}>
+            <View style={styles.pageContainer}>
               { PageComponent ? <PageComponent /> : <NotFound /> }
             </View>
           );
         }}
+        // Additional settings
         horizontal={true}
         pagingEnabled
         scrollEnabled={true}
@@ -118,51 +98,32 @@ export default function Analysis() {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     height,
     width,
+    color: "#000000",
+    backgroundColor: "#ffffff",
+  },
+  pageContainer: {
     flex: 1,
+    height,
+    width,
     color: "#000000",
     backgroundColor: "#ffffff",
   },
   pageTitleContainer: {
+    width,
     position: "absolute",
     bottom: 0,
     textAlign: "center",
     justifyContent: "center",
     alignItems: "center",
-    height: 50,
-    width,
-    backgroundColor: "#ffffff",
     zIndex: 1,
+  },
+  pageTitle: {
     marginBottom: 120,
-  },  
-  headerTitle: {
     color: "#000000",
-    fontWeight: "500",
+    fontWeight: "300",
     fontSize: 15,
-  },
-  boldText: {
-    textAlign: "center",
-    color: "#000000",
-    fontWeight: "500",
-    fontSize: 20,
-  },
-  tabBar: {
-    position: "absolute",
-    bottom: 0,
-    width,
-    height: 70,
-    flexDirection: "row",
-    zIndex: 1,
-    backgroundColor: "#ffffff",
-  },
-  activeTab: {},
-  tabItem: {
-    flex: 1,
-    alignItems: "center",
-  },
-  tabText: {
-    fontSize: 15,
-    color: "#727285",
   },
 });

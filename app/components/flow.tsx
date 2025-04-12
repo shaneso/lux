@@ -7,7 +7,6 @@ import { Text, View, StyleSheet } from "react-native";
 export default function Flow() {
   return (
     <View style={styles.container}>
-      <Text style={styles.headerTitle}>Flow</Text>
     </View>
   );
 }

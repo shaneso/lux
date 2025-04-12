@@ -3,13 +3,12 @@
 import { Text, TextInput, View, StyleSheet } from "react-native";
 import React, {useState} from "react";
 
-// Features page component function
+// Regression page component function
 
 export default function Regression() {
   const [text, setText] = useState("");
   return (
     <View style={styles.container}>
-      <Text style={styles.headerTitle}>Regression</Text>
       <TextInput
         style={styles.textInput}
         placeholder="Type here"
