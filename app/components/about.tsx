@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 0,
     marginBottom: 120,
-    color: "#000000",
+    color: "#727285",
     fontWeight: "300",
     fontSize: 15,
   },

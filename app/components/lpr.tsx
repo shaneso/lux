@@ -1,18 +1,21 @@
 // Import statements
 
 import { Text, TextInput, View, StyleSheet } from "react-native";
+import { Link } from "expo-router";
 import React, {useState} from "react";
 
 // Features page component function
 
-export default function Flow() {
+export default function LPR() {
   const [cValue, setCValue] = useState("");
   const [iValue, setIValue] = useState("");
+  const [major, setMajor] = useState("");
+  const [minor, setMinor] = useState("");
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.numInput}
-        placeholder="C value"
+        placeholder="Total similar metastases"
         placeholderTextColor="#cccccc"
         onChangeText={newText => setCValue(newText)}
         defaultValue={cValue}
@@ -21,10 +24,28 @@ export default function Flow() {
       />
       <TextInput
         style={styles.numInput}
-        placeholder="I value"
+        placeholder="Total non-similar metastases"
         placeholderTextColor="#cccccc"
         onChangeText={newText => setIValue(newText)}
         defaultValue={iValue}
+        keyboardType="numeric"
+        selectionColor="#000000"
+      />
+      <TextInput
+        style={styles.numInput}
+        placeholder="Major axis length"
+        placeholderTextColor="#cccccc"
+        onChangeText={newText => setMajor(newText)}
+        defaultValue={major}
+        keyboardType="numeric"
+        selectionColor="#000000"
+      />
+      <TextInput
+        style={styles.numInput}
+        placeholder="Minor axis length"
+        placeholderTextColor="#cccccc"
+        onChangeText={newText => setMinor(newText)}
+        defaultValue={minor}
         keyboardType="numeric"
         selectionColor="#000000"
       />

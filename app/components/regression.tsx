@@ -3,18 +3,30 @@
 import { Text, TextInput, View, StyleSheet } from "react-native";
 import React, {useState} from "react";
 
-// Regression page component function
+// Features page component function
 
 export default function Regression() {
-  const [text, setText] = useState("");
+  const [cValue, setCValue] = useState("");
+  const [iValue, setIValue] = useState("");
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.numInput}
-        placeholder="Type here"
-        onChangeText={newText => setText(newText)}
-        defaultValue={text}
+        placeholder="C value"
+        placeholderTextColor="#cccccc"
+        onChangeText={newText => setCValue(newText)}
+        defaultValue={cValue}
         keyboardType="numeric"
+        selectionColor="#000000"
+      />
+      <TextInput
+        style={styles.numInput}
+        placeholder="I value"
+        placeholderTextColor="#cccccc"
+        onChangeText={newText => setIValue(newText)}
+        defaultValue={iValue}
+        keyboardType="numeric"
+        selectionColor="#000000"
       />
     </View>
   );
@@ -29,43 +41,24 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
     textAlign: "center",
     justifyContent: "center",
-    alignItems: "center",
-    padding: 30,
-  },
-  headerTitle: {
-    position: "absolute",
-    top: 0,
-    marginTop: 150,
-    color: "#000000",
-    fontWeight: "500",
-    fontSize: 15,
-    padding: 10,
-  },
-  title: {
-    color: "#000000",
-    fontWeight: "500",
-    fontSize: 30,
-    padding: 10,
-  },
-  boldText: {
-    color: "#000000",
-    fontWeight: "500",
-    fontSize: 20,
-    textAlign: "center",
+    paddingHorizontal: 50,
   },
   text: {
     color: "#000000",
     fontWeight: "300",
     fontSize: 15,
+    textAlign: "justify",
   },
   numInput: {
+    color: "#727285",
     backgroundColor: "#ffffff",
     width: "100%",
     height: 50,
-    padding: 5,
-    textAlign: "center",
+    marginVertical: 20,
+    textAlign: "justify",
+    paddingInline: 17,
+    borderRadius: 12,
     borderWidth: 0.2,
-    borderRadius: 5,
     borderColor: "#727285",
   },
 });

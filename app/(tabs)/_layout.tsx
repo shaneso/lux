@@ -52,15 +52,16 @@ export default function RootLayout() {
 
 const styles = StyleSheet.create({
   tabBar: {
+    height: 150,
     position: "absolute",
     top: 0,
     textAlign: "center",
-    height: 150,
     borderBottomStartRadius: 50,
     borderBottomEndRadius: 50,
   },
   tabBarLabel: {
     marginTop: 50,
     fontSize: 15,
+    fontWeight: 300,
   },
 });

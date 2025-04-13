@@ -11,7 +11,7 @@ import React, {useRef, useState} from "react";
 
 // Import page components
 
-import Features from "../components/features";
+import LPR from "../components/lpr";
 import Flow from "../components/flow";
 import Regression from "../components/regression";
 import NotFound from "../+not-found";
@@ -24,7 +24,7 @@ const { width } = Dimensions.get("window");
 // Key id mapping for each page
 
 const data = [
-  { id: "1", title: "Features", type: "features" },
+  { id: "1", title: "Linear-Parallel Ratio", type: "lpr" },
   { id: "2", title: "Regression", type: "regression" },
   { id: "3", title: "Flow", type: "flow" },
 ];
@@ -32,7 +32,7 @@ const data = [
 // Page mapping
 
 const pageMap: Record<string, React.FC> = {
-  features: Features,
+  lpr: LPR,
   regression: Regression,
   flow: Flow,
 };
@@ -120,8 +120,8 @@ const styles = StyleSheet.create({
   },
   pageTitle: {
     marginBottom: 120,
-    color: "#000000",
-    fontWeight: "300",
+    color: "#727285",
+    fontWeight: 300,
     fontSize: 15,
   },
 });
