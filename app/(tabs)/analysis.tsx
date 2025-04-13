@@ -102,14 +102,12 @@ const styles = StyleSheet.create({
     height,
     width,
     color: "#000000",
-    backgroundColor: "#ffffff",
   },
   pageContainer: {
     flex: 1,
     height,
     width,
     color: "#000000",
-    backgroundColor: "#ffffff",
   },
   pageTitleContainer: {
     width,

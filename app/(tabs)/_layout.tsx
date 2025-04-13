@@ -56,6 +56,8 @@ const styles = StyleSheet.create({
     top: 0,
     textAlign: "center",
     height: 150,
+    borderBottomStartRadius: 50,
+    borderBottomEndRadius: 50,
   },
   tabBarLabel: {
     marginTop: 50,

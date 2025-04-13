@@ -9,11 +9,14 @@ export default function Features() {
   const [text, setText] = useState("");
   return (
     <View style={styles.container}>
+      {/* <Text style={styles.text}>Linear-Parallel Ratio</Text> */}
       <TextInput
-        style={styles.textInput}
-        placeholder="Type here"
+        style={styles.numInput}
+        placeholder="Input"
+        placeholderTextColor="#f5f5f5"
         onChangeText={newText => setText(newText)}
         defaultValue={text}
+        keyboardType="numeric"
       />
     </View>
   );
@@ -28,43 +31,21 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
     textAlign: "center",
     justifyContent: "center",
-    alignItems: "center",
     padding: 30,
-  },
-  headerTitle: {
-    position: "absolute",
-    top: 0,
-    marginTop: 150,
-    color: "#000000",
-    fontWeight: "500",
-    fontSize: 15,
-    padding: 10,
-  },
-  title: {
-    color: "#000000",
-    fontWeight: "500",
-    fontSize: 30,
-    padding: 10,
-  },
-  boldText: {
-    color: "#000000",
-    fontWeight: "500",
-    fontSize: 20,
-    textAlign: "center",
   },
   text: {
     color: "#000000",
     fontWeight: "300",
     fontSize: 15,
+    textAlign: "justify",
   },
-  textInput: {
+  numInput: {
     backgroundColor: "#ffffff",
     width: "100%",
     height: 50,
     padding: 5,
     textAlign: "center",
-    borderWidth: 0.2,
-    borderRadius: 5,
-    borderColor: "#727285",
+    borderRadius: 10,
+    boxShadow: "7px 7px 13px #f5f5f5, -7px -7px 13px #ffffff"
   },
 });

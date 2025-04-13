@@ -10,10 +10,11 @@ export default function Regression() {
   return (
     <View style={styles.container}>
       <TextInput
-        style={styles.textInput}
+        style={styles.numInput}
         placeholder="Type here"
         onChangeText={newText => setText(newText)}
         defaultValue={text}
+        keyboardType="numeric"
       />
     </View>
   );
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
     fontWeight: "300",
     fontSize: 15,
   },
-  textInput: {
+  numInput: {
     backgroundColor: "#ffffff",
     width: "100%",
     height: 50,
