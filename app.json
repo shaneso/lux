@@ -19,7 +19,8 @@
     },
     "web": {
       "bundler": "metro",
-      "output": "static",
+      "output": "server", // API routes requires web.output to be set to "server"
+      // "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [

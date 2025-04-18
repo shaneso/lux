@@ -11,7 +11,6 @@ import React, {useRef, useState} from "react";
 
 // Import page components
 
-import LPR from "../components/lpr";
 import Flow from "../components/flow";
 import Regression from "../components/regression";
 import NotFound from "../+not-found";
@@ -24,15 +23,13 @@ const { width } = Dimensions.get("window");
 // Key id mapping for each page
 
 const data = [
-  { id: "1", title: "Linear-Parallel Ratio", type: "lpr" },
-  { id: "2", title: "Regression", type: "regression" },
-  { id: "3", title: "Flow", type: "flow" },
+  { id: "1", title: "Regression", type: "regression" },
+  { id: "2", title: "Flow", type: "flow" },
 ];
 
 // Page mapping
 
 const pageMap: Record<string, React.FC> = {
-  lpr: LPR,
   regression: Regression,
   flow: Flow,
 };
