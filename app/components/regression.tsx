@@ -51,14 +51,13 @@ const styles = StyleSheet.create({
   },
   numInput: {
     color: "#727285",
-    backgroundColor: "#ffffff",
+    backgroundColor: "#fafafa",
     width: "100%",
     height: 50,
     marginVertical: 20,
     textAlign: "justify",
     paddingInline: 17,
     borderRadius: 12,
-    borderWidth: 0.2,
     borderColor: "#727285",
   },
 });
