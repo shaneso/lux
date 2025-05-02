@@ -42,11 +42,11 @@ export default function Analysis() {
 
 // Handle scroll and offset
 
-  const scrollHandler = (event: any) => {
-    const offsetX = event.nativeEvent.contentOffset.x;
-    const currentIndex = Math.round(offsetX / width);
-    setActiveIndex(currentIndex);
-  };
+const scrollHandler = (event: any) => {
+  const offsetX = event.nativeEvent.contentOffset.x;
+  const currentIndex = Math.round(offsetX / width);
+  setActiveIndex(currentIndex);
+};
 
 // Return components
 
