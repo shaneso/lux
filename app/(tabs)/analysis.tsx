@@ -12,7 +12,7 @@ import React, {useRef, useState} from "react";
 // Import page components
 
 import Flow from "../components/flow";
-import Regression from "../components/regression";
+import Gompertz from "../components/gompertz";
 import NotFound from "../+not-found";
 
 // Variables storing device dimensions
@@ -23,14 +23,14 @@ const { width } = Dimensions.get("window");
 // Key id mapping for each page
 
 const data = [
-  { id: "1", title: "Regression", type: "regression" },
+  { id: "1", title: "Gompertz", type: "gompertz" },
   { id: "2", title: "Flow", type: "flow" },
 ];
 
 // Page mapping
 
 const pageMap: Record<string, React.FC> = {
-  regression: Regression,
+  gompertz: Gompertz,
   flow: Flow,
 };
 
@@ -99,12 +99,14 @@ const styles = StyleSheet.create({
     height,
     width,
     color: "#000000",
+    backgroundColor: "#ffffff",
   },
   pageContainer: {
     flex: 1,
     height,
     width,
     color: "#000000",
+    backgroundColor: "#ffffff",
   },
   pageTitleContainer: {
     width,
