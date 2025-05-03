@@ -20,6 +20,7 @@ export default function Index() {
   return (
     <FlatList
       data={data}
+      style={styles.index}
       keyExtractor={( item ) => item.id}
       renderItem={({ item }) => {
         const PageComponent = pageMap[item.type];
@@ -40,6 +41,9 @@ export default function Index() {
 }
 
 const styles = StyleSheet.create({
+  index: {
+    backgroundColor: "#ffffff",
+  },
   container: {
     height,
     color: "#000000",
