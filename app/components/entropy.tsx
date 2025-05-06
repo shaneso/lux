@@ -21,21 +21,8 @@ export default function Flow() {
   // Numeric type conversions
   var num_totalTypes = parseFloat(totalTypes);
 
-  // Display result
-  const displayResult = () => {
-    const description = "";
-    switch (result) {
-      case result :
-        
-        break;
-    
-      default:
-        break;
-    }
-    Alert.alert("Shannon Entropy", result + "", [
-      {text: "OK"},
-    ]);
-  };
+  // Maximum Shannon entropy
+  var maxH = Math.log2(num_totalTypes);
 
   // Notify user
   const notifyUser = () =>
@@ -43,12 +30,42 @@ export default function Flow() {
       {text: "OK"},
     ]);
 
+  // Display result
+  const displayResult = () => {
+    // Normalized heterogeneity
+    var normH = result / maxH;
+    console.log(maxH);
+    console.log(normH);
+    let summary = "";
+    if (normH <= 0.33) {
+      summary = "The tumor has low heterogeneity";
+    } else if (normH >= 0.34 && normH <= 0.66) {
+      summary = "The tumor has moderate heterogeneity";
+    } else if (normH >= 0.67) {
+      summary = "The tumor has high heterogeneity";
+    }
+    if (result != null && result != 0 && !isNaN(result)) {
+      Alert.alert("Tumor Heterogeneity",
+        "Entropy: " + result + "\n" +
+        summary, [
+        {text: "OK"},
+      ]);
+
+      // Clear input values
+      setTotalTypes("");
+      setCellProportions([]);
+      setInput("");
+      setIsReady(false);
+    } else {
+      notifyUser();
+    }
+  };
+
   const handleInput = () => {
     const parsedInput = parseFloat(input);
     if (result != null && !isNaN(parsedInput)) {
       setCellProportions(prev => [...prev, parsedInput]); // Add cell proportion input to array
-      // cellProportions.push(parsedInput);
-      setInput(""); // Clear input value
+      setInput("");
       console.log(cellProportions);
     } else {
       notifyUser();
@@ -75,7 +92,7 @@ export default function Flow() {
       />
       <TextInput
         style={styles.numInput}
-        placeholder="Cell proportion per type"
+        placeholder="Cell probability"
         placeholderTextColor="#cccccc"
         defaultValue={input}
         onChangeText={setInput}
@@ -84,10 +101,10 @@ export default function Flow() {
       />
       <Pressable
       onPress={handleInput}
-      style={styles.pressable}
+      style={styles.addPressable}
       disabled={isReady}
       >
-        <Text style={styles.button}>Add</Text>
+        <Text style={styles.addButton}>Add cell probability</Text>
       </Pressable>
       <Pressable
       onPress={() => {
@@ -98,6 +115,7 @@ export default function Flow() {
           result = -result;
           console.log(result);
           displayResult();
+          result = 0;
         } else {
           notifyUser();
         }
@@ -143,6 +161,22 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     paddingInline: 17,
     borderRadius: 12,
+  },
+  addPressable: {
+    justifyContent: "center",
+    backgroundColor: "#ffffff",
+    height: 50,
+    marginVertical: 20,
+    paddingInline: 17,
+    borderWidth: 1,
+    borderRadius: 12,
+  },
+  addButton: {
+    color: "#000000",
+    fontWeight: 300,
+    fontSize: 15,
+    padding: 10,
+    textAlign: "center",
   },
   button: {
     color: "#ffffff",
