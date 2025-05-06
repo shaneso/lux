@@ -5,6 +5,7 @@
 
 import { Text, TextInput, View, StyleSheet, Pressable, Alert } from "react-native";
 import React, {useState, useEffect} from "react";
+import * as Haptics from "expo-haptics";
 
 // Features page component function
 
@@ -34,8 +35,6 @@ export default function Flow() {
   const displayResult = () => {
     // Normalized heterogeneity
     var normH = result / maxH;
-    console.log(maxH);
-    console.log(normH);
     let summary = "";
     if (normH <= 0.33) {
       summary = "The tumor has low heterogeneity";
@@ -62,11 +61,11 @@ export default function Flow() {
   };
 
   const handleInput = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     const parsedInput = parseFloat(input);
     if (result != null && !isNaN(parsedInput)) {
       setCellProportions(prev => [...prev, parsedInput]); // Add cell proportion input to array
       setInput("");
-      console.log(cellProportions);
     } else {
       notifyUser();
     }
@@ -75,7 +74,6 @@ export default function Flow() {
   useEffect(() => {
     if (cellProportions.length === num_totalTypes) {
       setIsReady(true);
-      console.log("Updated: " + cellProportions);
     }
   }, [cellProportions]);
 
@@ -108,12 +106,12 @@ export default function Flow() {
       </Pressable>
       <Pressable
       onPress={() => {
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
         if (!isNaN(result)) {
           for (let i = 0; i < num_totalTypes; i++) {
             result += cellProportions[i] * Math.log2(cellProportions[i]);
           }
           result = -result;
-          console.log(result);
           displayResult();
           result = 0;
         } else {

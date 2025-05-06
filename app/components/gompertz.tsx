@@ -5,6 +5,7 @@
 
 import { Text, TextInput, View, StyleSheet, Pressable, Alert } from "react-native";
 import React, {useState} from "react";
+import * as Haptics from "expo-haptics";
 
 // Features page component function
 
@@ -76,8 +77,8 @@ export default function Regression() {
       />
       <Pressable
       onPress={() => {
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
         result = num_V0 * Math.exp((num_alpha / num_beta) * (1 - Math.exp(-num_beta * num_time)));
-        console.log(result);
         if (result != null && !isNaN(result)) {
           displayResult();
         } else {
