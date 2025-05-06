@@ -1,84 +1,102 @@
-// Gompertz sigmoidal function analysis page
-// Volumetric tumor growth over time
+// Shannon entropy analysis
+// Tumor heterogeneity
 
 // Import statements
 
 import { Text, TextInput, View, StyleSheet, Pressable, Alert } from "react-native";
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 
 // Features page component function
 
-export default function Regression() {
+export default function Flow() {
   // Result value
   var result = 0;
 
   // Gompertz function input parameters
-  const [V0, setV0] = useState("");
-  const [alpha, setAlpha] = useState("");
-  const [beta, setBeta] = useState("");
-  const [time, setTime] = useState("");
+  const [totalTypes, setTotalTypes] = useState("");
+  const [input, setInput] = useState("");
+  const [cellProportions, setCellProportions] = useState<number[]>([]);
+  const [isReady, setIsReady] = useState(false);
 
   // Numeric type conversions
-  var num_V0 = parseFloat(V0);
-  var num_alpha = parseFloat(alpha);
-  var num_beta = parseFloat(beta);
-  var num_time = parseFloat(time);
+  var num_totalTypes = parseFloat(totalTypes);
 
   // Display result
-  const displayResult = () =>
-    Alert.alert("Estimated Tumor Volume", result + " mm\u00B3", [
+  const displayResult = () => {
+    const description = "";
+    switch (result) {
+      case result :
+        
+        break;
+    
+      default:
+        break;
+    }
+    Alert.alert("Shannon Entropy", result + "", [
       {text: "OK"},
     ]);
-  
+  };
+
   // Notify user
   const notifyUser = () =>
     Alert.alert("Missing data", "Please fill in all input fields", [
       {text: "OK"},
     ]);
 
+  const handleInput = () => {
+    const parsedInput = parseFloat(input);
+    if (result != null && !isNaN(parsedInput)) {
+      setCellProportions(prev => [...prev, parsedInput]); // Add cell proportion input to array
+      // cellProportions.push(parsedInput);
+      setInput(""); // Clear input value
+      console.log(cellProportions);
+    } else {
+      notifyUser();
+    }
+  };
+
+  useEffect(() => {
+    if (cellProportions.length === num_totalTypes) {
+      setIsReady(true);
+      console.log("Updated: " + cellProportions);
+    }
+  }, [cellProportions]);
+
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.numInput}
-        placeholder="Initial tumor volume"
+        placeholder="Total number of cell types"
         placeholderTextColor="#cccccc"
-        defaultValue={V0}
-        onChangeText={newText => setV0(newText)}
+        defaultValue={totalTypes}
+        onChangeText={newText => setTotalTypes(newText)}
         keyboardType="numeric"
         selectionColor="#000000"
       />
       <TextInput
         style={styles.numInput}
-        placeholder="Growth rate"
+        placeholder="Cell proportion per type"
         placeholderTextColor="#cccccc"
-        defaultValue={alpha}
-        onChangeText={newText => setAlpha(newText)}
-        keyboardType="numeric"
-        selectionColor="#000000"
-      />
-      <TextInput
-        style={styles.numInput}
-        placeholder="Deceleration rate"
-        placeholderTextColor="#cccccc"
-        defaultValue={beta}
-        onChangeText={newText => setBeta(newText)}
-        keyboardType="numeric"
-        selectionColor="#000000"
-      />
-      <TextInput
-        style={styles.numInput}
-        placeholder="Time input"
-        placeholderTextColor="#cccccc"
-        defaultValue={time}
-        onChangeText={newText => setTime(newText)}
+        defaultValue={input}
+        onChangeText={setInput}
         keyboardType="numeric"
         selectionColor="#000000"
       />
       <Pressable
+      onPress={handleInput}
+      style={styles.pressable}
+      disabled={isReady}
+      >
+        <Text style={styles.button}>Add</Text>
+      </Pressable>
+      <Pressable
       onPress={() => {
-        result = num_V0 * Math.exp((num_alpha / num_beta) * (1 - Math.exp(-num_beta * num_time)));
-        console.log(result);
-        if (result != null && !isNaN(result)) {
+        if (!isNaN(result)) {
+          for (let i = 0; i < num_totalTypes; i++) {
+            result += cellProportions[i] * Math.log2(cellProportions[i]);
+          }
+          result = -result;
+          console.log(result);
           displayResult();
         } else {
           notifyUser();

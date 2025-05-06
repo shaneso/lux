@@ -11,7 +11,7 @@ import React, {useRef, useState} from "react";
 
 // Import page components
 
-import Flow from "../components/flow";
+import Entropy from "../components/entropy";
 import Gompertz from "../components/gompertz";
 import NotFound from "../+not-found";
 
@@ -24,14 +24,14 @@ const { width } = Dimensions.get("window");
 
 const data = [
   { id: "1", title: "Gompertz", type: "gompertz" },
-  { id: "2", title: "Flow", type: "flow" },
+  { id: "2", title: "Entropy", type: "entropy" },
 ];
 
 // Page mapping
 
 const pageMap: Record<string, React.FC> = {
   gompertz: Gompertz,
-  flow: Flow,
+  entropy: Entropy,
 };
 
 // Analysis page component function
