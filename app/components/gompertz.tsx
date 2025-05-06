@@ -26,10 +26,21 @@ export default function Regression() {
   var num_time = parseFloat(time);
 
   // Display result
-  const displayResult = () =>
-    Alert.alert("Estimated Tumor Volume", result + " mm\u00B3", [
-      {text: "OK"},
-    ]);
+  const displayResult = () => {
+    result = num_V0 * Math.exp((num_alpha / num_beta) * (1 - Math.exp(-num_beta * num_time)));
+    if (result != null && !isNaN(result)) {
+      Alert.alert("Estimated Tumor Volume", result + " mm\u00B3", [
+        {text: "OK"},
+      ]);
+  
+      // Clear input values
+      setV0("");
+      setAlpha("");
+      setBeta("");
+      setTime("");
+      result = 0;
+    }
+  };
   
   // Notify user
   const notifyUser = () =>
@@ -78,7 +89,6 @@ export default function Regression() {
       <Pressable
       onPress={() => {
         Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-        result = num_V0 * Math.exp((num_alpha / num_beta) * (1 - Math.exp(-num_beta * num_time)));
         if (result != null && !isNaN(result)) {
           displayResult();
         } else {

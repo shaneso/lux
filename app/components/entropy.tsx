@@ -33,6 +33,11 @@ export default function Flow() {
 
   // Display result
   const displayResult = () => {
+    // Calculate Shannon entropy value
+    for (let i = 0; i < num_totalTypes; i++) {
+      result += cellProportions[i] * Math.log2(cellProportions[i]);
+    }
+    result = -result;
     // Normalized heterogeneity
     var normH = result / maxH;
     let summary = "";
@@ -55,6 +60,7 @@ export default function Flow() {
       setCellProportions([]);
       setInput("");
       setIsReady(false);
+      result = 0;
     } else {
       notifyUser();
     }
@@ -108,12 +114,7 @@ export default function Flow() {
       onPress={() => {
         Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
         if (!isNaN(result)) {
-          for (let i = 0; i < num_totalTypes; i++) {
-            result += cellProportions[i] * Math.log2(cellProportions[i]);
-          }
-          result = -result;
           displayResult();
-          result = 0;
         } else {
           notifyUser();
         }
