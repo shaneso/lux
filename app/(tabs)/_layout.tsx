@@ -39,6 +39,15 @@ export default function RootLayout() {
         }}
       />
       <Tabs.Screen
+        name="therapy"
+        options={{
+          title: "Therapy",
+          headerShown: false,
+          tabBarLabelStyle: styles.tabBarLabel,
+          tabBarIcon: () => null,
+        }}
+      />
+      <Tabs.Screen
         name="+not-found"
         options={{
           headerShown: false,

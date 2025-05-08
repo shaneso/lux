@@ -90,13 +90,21 @@ export default function Flow() {
         placeholder="Total number of cell types"
         placeholderTextColor="#cccccc"
         defaultValue={totalTypes}
-        onChangeText={newText => setTotalTypes(newText)}
+        onChangeText={(newText) => {
+          if (parseInt(newText) <= 1) {
+            Alert.alert("Invalid value", "Please input a number greater than 1", [{text: "OK"}]);
+            setIsReady(true);
+          } else {
+            setTotalTypes(newText);
+            setIsReady(false);
+          }
+        }}
         keyboardType="numeric"
         selectionColor="#000000"
       />
       <TextInput
         style={styles.numInput}
-        placeholder="Cell probability"
+        placeholder="Cell proportion"
         placeholderTextColor="#cccccc"
         defaultValue={input}
         onChangeText={setInput}
@@ -108,7 +116,7 @@ export default function Flow() {
       style={styles.addPressable}
       disabled={isReady}
       >
-        <Text style={styles.addButton}>Add cell probability</Text>
+        <Text style={styles.addButton}>Add cell proportion</Text>
       </Pressable>
       <Pressable
       onPress={() => {
