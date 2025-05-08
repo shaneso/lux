@@ -34,13 +34,6 @@ export default function Regression() {
 
   // Display result
   const displayResult = () => {
-    console.log(num_T);
-    console.log(num_C);
-    console.log(num_r);
-    console.log(num_K);
-    console.log(num_k);
-    console.log(num_s);
-
     // Calculate estimated tumor volume size
     result = (num_r * num_T * (1 - (num_T / num_K))) - (num_k * ((num_C * num_T) / (num_s + num_T)));
 
@@ -58,7 +51,7 @@ export default function Regression() {
 
     if (result != null && !isNaN(result)) {
       Alert.alert("Result",
-        "Tumor growth rate: " + roundedResult + " cells/day" + "\n\n" + summary, [
+        "Tumor growth rate: " + roundedResult + " cells/day" + "\n" + summary, [
         {text: "OK"},
       ]);
   
@@ -119,7 +112,7 @@ export default function Regression() {
       />
       <TextInput
         style={styles.numInput}
-        placeholder="CAR-T kill rate (per cell⁻¹day⁻¹)"
+        placeholder="CAR-T kill rate (per cell per day)"
         placeholderTextColor="#cccccc"
         defaultValue={k}
         onChangeText={newText => setk(newText)}

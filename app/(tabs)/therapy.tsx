@@ -11,9 +11,9 @@ import React, {useRef, useState} from "react";
 
 // Import page components
 
-import CAR_T from "../components/therapy/car_t";
+import CAR_T_TEST from "../components/therapy/car_t_test";
+import CTL_TEST from "../components/therapy/ctl_test";
 import CTL from "../components/therapy/ctl";
-import CTL_NK from "../components/therapy/ctl_nk";
 import NotFound from "../+not-found";
 
 // Variables storing device dimensions
@@ -24,17 +24,17 @@ const { width } = Dimensions.get("window");
 // Key id mapping for each page
 
 const data = [
-  { id: "1", title: "CAR-T", type: "car_t" },
-  { id: "2", title: "CTL/CD8⁺ T", type: "ctl" },
-  { id: "3", title: "CTL & NK", type: "ctl_nk" },
+  { id: "1", title: "CAR-T Therapy", type: "car_t_test" },
+  { id: "2", title: "CTL Therapy", type: "ctl_test" },
+  { id: "3", title: "CTL/CD8⁺ T", type: "ctl" },
 ];
 
 // Page mapping
 
 const pageMap: Record<string, React.FC> = {
-  car_t: CAR_T,
+  car_t_test: CAR_T_TEST,
+  ctl_test: CTL_TEST,
   ctl: CTL,
-  ctl_nk: CTL_NK,
 };
 
 // Analysis page component function

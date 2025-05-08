@@ -13,55 +13,52 @@ export default function Regression() {
   // Result value
   var result = 0;
 
-  // First order derivative
-  // Rate of tumor volume change
-  var growthRate = 0;
-
-  // Second order derivative
-  // Tumor growth rate curvature
-  var growthCurvature = 0;
-
-  // Tumor carrying capacity
-  var carryingCapacity = 0;
+  // Rounded result value
+  var roundedResult = 0;
 
   // Gompertz function input parameters
-  const [V0, setV0] = useState("");
-  const [alpha, setAlpha] = useState("");
-  const [beta, setBeta] = useState("");
-  const [time, setTime] = useState("");
+  const [T, setT] = useState("");
+  const [E, setE] = useState("");
+  const [a, seta] = useState("");
+  const [K, setK] = useState("");
+  const [n, setn] = useState("");
 
   // Numeric type conversions
-  var num_V0 = parseFloat(V0);
-  var num_alpha = parseFloat(alpha);
-  var num_beta = parseFloat(beta);
-  var num_time = parseFloat(time);
+  var num_T = parseFloat(T);
+  var num_E = parseFloat(E);
+  var num_a = parseFloat(a);
+  var num_b = 1 / parseFloat(K);
+  var num_n = parseFloat(n);
 
   // Display result
   const displayResult = () => {
     // Calculate estimated tumor volume size
-    result = num_V0 * Math.exp((num_alpha / num_beta) * (1 - Math.exp(-num_beta * num_time)));
-    // Calculate estimated rate of growth of tumor volume size
-    growthRate = result * num_alpha * Math.exp(-num_beta * num_time);
-    // Calculate estimated tumor volume growth rate curvature
-    growthCurvature = num_alpha * Math.exp(-num_beta * num_time) * result * (num_alpha * Math.exp(-num_beta * num_time) - num_beta);
-    // Calculate estimated tumor carrying capacity
-    carryingCapacity = num_V0 * Math.exp(num_alpha / num_beta);
+    result = (num_a * num_T * (1 - num_b * num_T)) - (num_n * num_E * num_T);
+
+    let summary = "";
+
+    if (result < 0) {
+      summary = "CTL therapy is effective";
+    } else if (result === 0) {
+      summary = "The tumor is in a controlled state";
+    } else if (result > 0) {
+      summary = "Insufficient immune control";
+    }
+
+    roundedResult = Math.round(result * 10000) / 10000;
 
     if (result != null && !isNaN(result)) {
       Alert.alert("Result",
-        "Estimated tumor size: " + result + " cm\u00B3" + "\n\n" +
-        "Tumor growth rate: " + growthRate + " cm\u00B3/day" + "\n\n" +
-        "Tumor growth acceleration: " + growthCurvature + " cm\u00B3/day\u00B2" + "\n\n" +
-        "Carrying capacity: " + carryingCapacity + " cm\u00B3"
-        , [
+        "Tumor growth rate: " + roundedResult + " cells/day" + "\n" + summary, [
         {text: "OK"},
       ]);
   
       // Clear input values
-      setV0("");
-      setAlpha("");
-      setBeta("");
-      setTime("");
+      setT("");
+      setE("");
+      seta("");
+      setK("");
+      setn("");
       result = 0;
     }
   };
@@ -76,37 +73,46 @@ export default function Regression() {
     <View style={styles.container}>
       <TextInput
         style={styles.numInput}
-        placeholder="Initial tumor volume (cm³)"
+        placeholder="Tumor cell population (cells)"
         placeholderTextColor="#cccccc"
-        defaultValue={V0}
-        onChangeText={newText => setV0(newText)}
+        defaultValue={T}
+        onChangeText={newText => setT(newText)}
         keyboardType="numeric"
         selectionColor="#000000"
       />
       <TextInput
         style={styles.numInput}
-        placeholder="Growth rate (per day)"
+        placeholder="CTL cell population (cells)"
         placeholderTextColor="#cccccc"
-        defaultValue={alpha}
-        onChangeText={newText => setAlpha(newText)}
+        defaultValue={E}
+        onChangeText={newText => setE(newText)}
         keyboardType="numeric"
         selectionColor="#000000"
       />
       <TextInput
         style={styles.numInput}
-        placeholder="Deceleration rate (per day)"
+        placeholder="Tumor growth rate (per day)"
         placeholderTextColor="#cccccc"
-        defaultValue={beta}
-        onChangeText={newText => setBeta(newText)}
+        defaultValue={a}
+        onChangeText={newText => seta(newText)}
         keyboardType="numeric"
         selectionColor="#000000"
       />
       <TextInput
         style={styles.numInput}
-        placeholder="Time input (in days)"
+        placeholder="Carrying capacity (cells)"
         placeholderTextColor="#cccccc"
-        defaultValue={time}
-        onChangeText={newText => setTime(newText)}
+        defaultValue={K}
+        onChangeText={newText => setK(newText)}
+        keyboardType="numeric"
+        selectionColor="#000000"
+      />
+      <TextInput
+        style={styles.numInput}
+        placeholder="CTL kill rate (per cell per day)"
+        placeholderTextColor="#cccccc"
+        defaultValue={n}
+        onChangeText={newText => setn(newText)}
         keyboardType="numeric"
         selectionColor="#000000"
       />
@@ -148,7 +154,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fafafa",
     width: "100%",
     height: 50,
-    marginVertical: 20,
+    marginVertical: 10,
     textAlign: "justify",
     paddingInline: 17,
     borderRadius: 12,
