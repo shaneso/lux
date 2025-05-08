@@ -1,4 +1,4 @@
-// Gompertz sigmoidal function analysis page
+// Gompertz sigmoidal function analysis
 // Volumetric tumor growth over time
 
 // Import statements
@@ -12,6 +12,17 @@ import * as Haptics from "expo-haptics";
 export default function Regression() {
   // Result value
   var result = 0;
+
+  // First order derivative
+  // Rate of tumor volume change
+  var growthRate = 0;
+
+  // Second order derivative
+  // Tumor growth rate curvature
+  var growthCurvature = 0;
+
+  // Tumor carrying capacity
+  var carryingCapacity = 0;
 
   // Gompertz function input parameters
   const [V0, setV0] = useState("");
@@ -27,9 +38,22 @@ export default function Regression() {
 
   // Display result
   const displayResult = () => {
+    // Calculate estimated tumor volume size
     result = num_V0 * Math.exp((num_alpha / num_beta) * (1 - Math.exp(-num_beta * num_time)));
+    // Calculate estimated rate of growth of tumor volume size
+    growthRate = result * num_alpha * Math.exp(-num_beta * num_time);
+    // Calculate estimated tumor volume growth rate curvature
+    growthCurvature = num_alpha * Math.exp(-num_beta * num_time) * result * (num_alpha * Math.exp(-num_beta * num_time) - num_beta);
+    // Calculate estimated tumor carrying capacity
+    carryingCapacity = num_V0 * Math.exp(num_alpha / num_beta);
+
     if (result != null && !isNaN(result)) {
-      Alert.alert("Estimated Tumor Volume", result + " mm\u00B3", [
+      Alert.alert("Result",
+        "Estimated tumor size: " + result + " cm\u00B3" + "\n\n" +
+        "Tumor growth rate: " + growthRate + " cm\u00B3/day" + "\n\n" +
+        "Tumor growth acceleration: " + growthCurvature + " cm\u00B3/day\u00B2" + "\n\n" +
+        "Carrying capacity: " + carryingCapacity + " cm\u00B3"
+        , [
         {text: "OK"},
       ]);
   
@@ -52,7 +76,7 @@ export default function Regression() {
     <View style={styles.container}>
       <TextInput
         style={styles.numInput}
-        placeholder="Initial tumor volume"
+        placeholder="Initial tumor volume (cm³)"
         placeholderTextColor="#cccccc"
         defaultValue={V0}
         onChangeText={newText => setV0(newText)}
@@ -61,7 +85,7 @@ export default function Regression() {
       />
       <TextInput
         style={styles.numInput}
-        placeholder="Growth rate"
+        placeholder="Growth rate (per day)"
         placeholderTextColor="#cccccc"
         defaultValue={alpha}
         onChangeText={newText => setAlpha(newText)}
@@ -70,7 +94,7 @@ export default function Regression() {
       />
       <TextInput
         style={styles.numInput}
-        placeholder="Deceleration rate"
+        placeholder="Deceleration rate (per day)"
         placeholderTextColor="#cccccc"
         defaultValue={beta}
         onChangeText={newText => setBeta(newText)}
@@ -79,7 +103,7 @@ export default function Regression() {
       />
       <TextInput
         style={styles.numInput}
-        placeholder="Time input"
+        placeholder="Time input (in days)"
         placeholderTextColor="#cccccc"
         defaultValue={time}
         onChangeText={newText => setTime(newText)}

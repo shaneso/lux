@@ -11,8 +11,9 @@ import React, {useRef, useState} from "react";
 
 // Import page components
 
-import Entropy from "../components/entropy";
-import Gompertz from "../components/gompertz";
+import Entropy from "../components/analysis/entropy";
+import Growth from "../components/analysis/growth";
+import Graph from "../components/analysis/graph";
 import NotFound from "../+not-found";
 
 // Variables storing device dimensions
@@ -23,15 +24,17 @@ const { width } = Dimensions.get("window");
 // Key id mapping for each page
 
 const data = [
-  { id: "1", title: "Gompertz", type: "gompertz" },
-  { id: "2", title: "Entropy", type: "entropy" },
+  { id: "1", title: "Tumor Growth", type: "growth" },
+  { id: "2", title: "Tumor Heterogeneity", type: "entropy" },
+  { id: "3", title: "Graph", type: "graph" },
 ];
 
 // Page mapping
 
 const pageMap: Record<string, React.FC> = {
-  gompertz: Gompertz,
+  growth: Growth,
   entropy: Entropy,
+  graph: Graph,
 };
 
 // Analysis page component function

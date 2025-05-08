@@ -20,7 +20,7 @@ export default function Flow() {
   const [isReady, setIsReady] = useState(false);
 
   // Numeric type conversions
-  var num_totalTypes = parseFloat(totalTypes);
+  var num_totalTypes = parseInt(totalTypes);
 
   // Maximum Shannon entropy
   var maxH = Math.log2(num_totalTypes);
@@ -49,8 +49,8 @@ export default function Flow() {
       summary = "The tumor has high heterogeneity";
     }
     if (result != null && result != 0 && !isNaN(result)) {
-      Alert.alert("Tumor Heterogeneity",
-        "Entropy: " + result + "\n" +
+      Alert.alert("Result",
+        "Tumor heterogeneity: " + result + "\n\n" +
         summary, [
         {text: "OK"},
       ]);
