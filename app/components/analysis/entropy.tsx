@@ -13,6 +13,9 @@ export default function Flow() {
   // Result value
   var result = 0;
 
+  // Rounded result value
+  var roundedResult = 0;
+
   // Gompertz function input parameters
   const [totalTypes, setTotalTypes] = useState("");
   const [input, setInput] = useState("");
@@ -48,9 +51,12 @@ export default function Flow() {
     } else if (normH >= 0.67) {
       summary = "The tumor has high heterogeneity";
     }
+
+    roundedResult = Math.round(result * 10000) / 10000;
+
     if (result != null && result != 0 && !isNaN(result)) {
       Alert.alert("Result",
-        "Tumor heterogeneity: " + result + "\n\n" +
+        "Tumor heterogeneity: " + roundedResult + "\n" +
         summary, [
         {text: "OK"},
       ]);

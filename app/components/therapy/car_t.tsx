@@ -16,70 +16,59 @@ export default function Regression() {
   // Rounded result value
   var roundedResult = 0;
 
-  // First order derivative
-  // Rate of tumor volume change
-  var growthRate = 0;
-
-  // Rounded growth rate
-  var roundedGrowthRate = 0;
-
-  // Second order derivative
-  // Tumor growth rate curvature
-  var growthCurvature = 0;
-
-  // Rounded growth rate curvature
-  var roundedGrowthCurvature = 0;
-
-  // Tumor carrying capacity
-  var carryingCapacity = 0;
-
-  // Rounded growth rate
-  var roundedCarryingCapacity = 0;
-
   // Gompertz function input parameters
-  const [V0, setV0] = useState("");
-  const [alpha, setAlpha] = useState("");
-  const [beta, setBeta] = useState("");
-  const [time, setTime] = useState("");
+  const [T, setT] = useState("");
+  const [C, setC] = useState("");
+  const [r, setr] = useState("");
+  const [K, setK] = useState("");
+  const [k, setk] = useState("");
+  const [s, sets] = useState("");
 
   // Numeric type conversions
-  var num_V0 = parseFloat(V0);
-  var num_alpha = parseFloat(alpha);
-  var num_beta = parseFloat(beta);
-  var num_time = parseFloat(time);
+  var num_T = parseFloat(T);
+  var num_C = parseFloat(C);
+  var num_r = parseFloat(r);
+  var num_K = parseFloat(K);
+  var num_k = parseFloat(k);
+  var num_s = parseFloat(s);
 
   // Display result
   const displayResult = () => {
+    console.log(num_T);
+    console.log(num_C);
+    console.log(num_r);
+    console.log(num_K);
+    console.log(num_k);
+    console.log(num_s);
+
     // Calculate estimated tumor volume size
-    result = num_V0 * Math.exp((num_alpha / num_beta) * (1 - Math.exp(-num_beta * num_time)));
+    result = (num_r * num_T * (1 - (num_T / num_K))) - (num_k * ((num_C * num_T) / (num_s + num_T)));
+
+    let summary = "";
+
+    if (result < 0) {
+      summary = "CAR-T therapy is effective";
+    } else if (result === 0) {
+      summary = "The tumor is in a controlled state";
+    } else if (result > 0) {
+      summary = "Insufficient immune control";
+    }
+
     roundedResult = Math.round(result * 10000) / 10000;
-
-    // Calculate estimated rate of growth of tumor volume size
-    growthRate = result * num_alpha * Math.exp(-num_beta * num_time);
-    roundedGrowthRate = Math.round(growthRate * 10000) / 10000;
-
-    // Calculate estimated tumor volume growth rate curvature
-    growthCurvature = num_alpha * Math.exp(-num_beta * num_time) * result * (num_alpha * Math.exp(-num_beta * num_time) - num_beta);
-    roundedGrowthCurvature = Math.round(growthCurvature * 10000) / 10000;
-
-    // Calculate estimated tumor carrying capacity
-    carryingCapacity = num_V0 * Math.exp(num_alpha / num_beta);
-    roundedCarryingCapacity = Math.round(carryingCapacity * 10000) / 10000;
 
     if (result != null && !isNaN(result)) {
       Alert.alert("Result",
-        "Estimated tumor size: " + roundedResult + " mm\u00B3" + "\n" +
-        "Growth rate: " + roundedGrowthRate + " cm\u00B3/day" + "\n" +
-        "Growth acceleration: " + roundedGrowthCurvature + " cm\u00B3/day\u00B2" + "\n" +
-        "Carrying capacity: " + roundedCarryingCapacity + " cm\u00B3", [
+        "Tumor growth rate: " + roundedResult + " cells/day" + "\n\n" + summary, [
         {text: "OK"},
       ]);
   
       // Clear input values
-      setV0("");
-      setAlpha("");
-      setBeta("");
-      setTime("");
+      setT("");
+      setC("");
+      setr("");
+      setK("");
+      setk("");
+      sets("");
       result = 0;
     }
   };
@@ -94,37 +83,55 @@ export default function Regression() {
     <View style={styles.container}>
       <TextInput
         style={styles.numInput}
-        placeholder="Initial tumor volume (mm³)"
+        placeholder="Tumor cell population (cells)"
         placeholderTextColor="#cccccc"
-        defaultValue={V0}
-        onChangeText={newText => setV0(newText)}
+        defaultValue={T}
+        onChangeText={newText => setT(newText)}
         keyboardType="numeric"
         selectionColor="#000000"
       />
       <TextInput
         style={styles.numInput}
-        placeholder="Growth rate (per day)"
+        placeholder="CAR-T cell population (cells)"
         placeholderTextColor="#cccccc"
-        defaultValue={alpha}
-        onChangeText={newText => setAlpha(newText)}
+        defaultValue={C}
+        onChangeText={newText => setC(newText)}
         keyboardType="numeric"
         selectionColor="#000000"
       />
       <TextInput
         style={styles.numInput}
-        placeholder="Deceleration rate (per day)"
+        placeholder="Tumor growth rate (per day)"
         placeholderTextColor="#cccccc"
-        defaultValue={beta}
-        onChangeText={newText => setBeta(newText)}
+        defaultValue={r}
+        onChangeText={newText => setr(newText)}
         keyboardType="numeric"
         selectionColor="#000000"
       />
       <TextInput
         style={styles.numInput}
-        placeholder="Time input (in days)"
+        placeholder="Carrying capacity (cells)"
         placeholderTextColor="#cccccc"
-        defaultValue={time}
-        onChangeText={newText => setTime(newText)}
+        defaultValue={K}
+        onChangeText={newText => setK(newText)}
+        keyboardType="numeric"
+        selectionColor="#000000"
+      />
+      <TextInput
+        style={styles.numInput}
+        placeholder="CAR-T kill rate (per cell⁻¹day⁻¹)"
+        placeholderTextColor="#cccccc"
+        defaultValue={k}
+        onChangeText={newText => setk(newText)}
+        keyboardType="numeric"
+        selectionColor="#000000"
+      />
+      <TextInput
+        style={styles.numInput}
+        placeholder="Half-saturation constant (cells)"
+        placeholderTextColor="#cccccc"
+        defaultValue={s}
+        onChangeText={newText => sets(newText)}
         keyboardType="numeric"
         selectionColor="#000000"
       />
@@ -166,7 +173,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fafafa",
     width: "100%",
     height: 50,
-    marginVertical: 20,
+    marginVertical: 10,
     textAlign: "justify",
     paddingInline: 17,
     borderRadius: 12,

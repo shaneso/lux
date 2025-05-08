@@ -11,9 +11,9 @@ import React, {useRef, useState} from "react";
 
 // Import page components
 
-import Entropy from "../components/analysis/entropy";
-import Growth from "../components/analysis/growth";
-import Graph from "../components/analysis/graph";
+import CAR_T from "../components/therapy/car_t";
+import CTL from "../components/therapy/ctl";
+import CTL_NK from "../components/therapy/ctl_nk";
 import NotFound from "../+not-found";
 
 // Variables storing device dimensions
@@ -24,17 +24,17 @@ const { width } = Dimensions.get("window");
 // Key id mapping for each page
 
 const data = [
-  { id: "1", title: "Tumor Growth", type: "growth" },
-  { id: "2", title: "Tumor Heterogeneity", type: "entropy" },
-  { id: "3", title: "Graph", type: "graph" },
+  { id: "1", title: "CAR-T", type: "car_t" },
+  { id: "2", title: "CTL/CD8⁺ T", type: "ctl" },
+  { id: "3", title: "CTL & NK", type: "ctl_nk" },
 ];
 
 // Page mapping
 
 const pageMap: Record<string, React.FC> = {
-  growth: Growth,
-  entropy: Entropy,
-  graph: Graph,
+  car_t: CAR_T,
+  ctl: CTL,
+  ctl_nk: CTL_NK,
 };
 
 // Analysis page component function
