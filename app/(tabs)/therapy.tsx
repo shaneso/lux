@@ -13,7 +13,7 @@ import React, {useRef, useState} from "react";
 
 import CAR_T_TEST from "../components/therapy/car_t_test";
 import CTL_TEST from "../components/therapy/ctl_test";
-import CTL from "../components/therapy/ctl";
+import CTL_CD4 from "../components/therapy/ctl_cd4";
 import NotFound from "../+not-found";
 
 // Variables storing device dimensions
@@ -24,9 +24,9 @@ const { width } = Dimensions.get("window");
 // Key id mapping for each page
 
 const data = [
-  { id: "1", title: "CAR-T Therapy", type: "car_t_test" },
-  { id: "2", title: "CTL Therapy", type: "ctl_test" },
-  { id: "3", title: "CTL/CD8⁺ T", type: "ctl" },
+  { id: "1", title: "CAR-T Therapy", type: "car_t_test" },   // CAR-T therapy response efficacy
+  { id: "2", title: "CTL Therapy", type: "ctl_test" },       // CTL therapy response efficacy
+  { id: "3", title: "CTL-CD4⁺ Response", type: "ctl_cd4" },  // CTL/CD8⁺ T and CD4⁺ helper T cell interaction
 ];
 
 // Page mapping
@@ -34,7 +34,7 @@ const data = [
 const pageMap: Record<string, React.FC> = {
   car_t_test: CAR_T_TEST,
   ctl_test: CTL_TEST,
-  ctl: CTL,
+  ctl_cd4: CTL_CD4,
 };
 
 // Analysis page component function

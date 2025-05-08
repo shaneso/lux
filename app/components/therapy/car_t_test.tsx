@@ -1,5 +1,4 @@
-// Gompertz sigmoidal function analysis
-// Volumetric tumor growth over time
+// CAR-T immunotherapy response efficacy analysis
 
 // Import statements
 
@@ -9,14 +8,14 @@ import * as Haptics from "expo-haptics";
 
 // Features page component function
 
-export default function Regression() {
+export default function CAR_T_Test() {
   // Result value
   var result = 0;
 
   // Rounded result value
   var roundedResult = 0;
 
-  // Gompertz function input parameters
+  // CAR-T therapy function input parameters
   const [T, setT] = useState("");
   const [C, setC] = useState("");
   const [r, setr] = useState("");
@@ -34,7 +33,7 @@ export default function Regression() {
 
   // Display result
   const displayResult = () => {
-    // Calculate estimated tumor volume size
+    // Calculate tumor growth rate with CAR-T therapy treatment
     result = (num_r * num_T * (1 - (num_T / num_K))) - (num_k * ((num_C * num_T) / (num_s + num_T)));
 
     let summary = "";

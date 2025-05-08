@@ -1,5 +1,4 @@
-// Gompertz sigmoidal function analysis
-// Volumetric tumor growth over time
+// CTL immunotherapy response efficacy analysis
 
 // Import statements
 
@@ -9,16 +8,16 @@ import * as Haptics from "expo-haptics";
 
 // Features page component function
 
-export default function Regression() {
+export default function CTL_Test() {
   // Result value
   var result = 0;
 
   // Rounded result value
   var roundedResult = 0;
 
-  // Gompertz function input parameters
-  const [T, setT] = useState("");
-  const [E, setE] = useState("");
+  // CTL therapy function input parameters
+  const [T, setT] = useState(""); // Tumor cell population
+  const [E, setE] = useState(""); // CTL cell population
   const [a, seta] = useState("");
   const [K, setK] = useState("");
   const [n, setn] = useState("");
@@ -32,7 +31,7 @@ export default function Regression() {
 
   // Display result
   const displayResult = () => {
-    // Calculate estimated tumor volume size
+    // Calculate tumor growth rate with CTL therapy treatment
     result = (num_a * num_T * (1 - num_b * num_T)) - (num_n * num_E * num_T);
 
     let summary = "";
