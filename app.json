@@ -15,12 +15,12 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.shaneso.lux"
     },
     "web": {
       "bundler": "metro",
-      "output": "server", // API routes requires web.output to be set to "server"
-      // "output": "static",
+      "output": "server",
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
