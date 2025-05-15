@@ -1,6 +1,10 @@
-# Welcome to your Expo app 👋
+# Welcome to Lux ✨
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Computational modeling can be an expensive task, especially for healthcare institutions. Moreover, current mathematical analysis tools for oncology-related complexities can be inefficient and costly. Lux is a mobile application programmed to simplify statistic forecasting for tumor growth, heterogeneity, and various immunotherapies, including Chimeric antigen receptor (CAR) T-cell therapies, Cytotoxic T lymphocyte (CTL/CD8⁺ T) treatments, and CTL/CD8⁺ T-cell treatments assisted by CD4⁺ T-cell stimulation.
+
+## Introduction
+
+Lux is the first software program in the Luminosity project series. The main objective of Luminosity is to expose the uncertainties of cancer progression in the human body in order to minimize potential risks.
 
 ## Get started
 

@@ -9,7 +9,7 @@ import * as Haptics from "expo-haptics";
 export default function About() {
   return (
     <View style={styles.container}>
-      <Text style={styles.boldText}>An Illuminate series project</Text>
+      <Text style={styles.boldText}>A Luminosity series project</Text>
       <Text style={styles.text}>Developed by Shane So</Text>
       <Link href={"https://github.com/shaneso/lux"} style={styles.footer} onPress={() => Haptics.selectionAsync()}>Learn more</Link>
     </View>

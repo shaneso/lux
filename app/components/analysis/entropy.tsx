@@ -41,8 +41,13 @@ export default function Flow() {
       result += cellProportions[i] * Math.log2(cellProportions[i]);
     }
     result = -result;
+
     // Normalized heterogeneity
     var normH = result / maxH;
+
+    // Rounded normalized entropy
+    var roundedNormH = Math.round(normH * 10000) / 10000;
+    
     let summary = "";
     if (normH <= 0.33) {
       summary = "The tumor has low heterogeneity";
@@ -57,6 +62,7 @@ export default function Flow() {
     if (result != null && result != 0 && !isNaN(result)) {
       Alert.alert("Result",
         "Tumor heterogeneity: " + roundedResult + "\n" +
+        "Normalized entropy: " + roundedNormH + "\n" +
         summary, [
         {text: "OK"},
       ]);

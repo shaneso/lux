@@ -69,9 +69,9 @@ export default function Regression() {
     if (result != null && !isNaN(result)) {
       Alert.alert("Result",
         "Estimated tumor size: " + roundedResult + " mm\u00B3" + "\n" +
-        "Growth rate: " + roundedGrowthRate + " cm\u00B3/day" + "\n" +
-        "Growth acceleration: " + roundedGrowthCurvature + " cm\u00B3/day\u00B2" + "\n" +
-        "Carrying capacity: " + roundedCarryingCapacity + " cm\u00B3", [
+        "Growth rate: " + roundedGrowthRate + " mm\u00B3/day" + "\n" +
+        "Growth acceleration: " + roundedGrowthCurvature + " mm\u00B3/day\u00B2" + "\n" +
+        "Carrying capacity: " + roundedCarryingCapacity + " mm\u00B3", [
         {text: "OK"},
       ]);
   
