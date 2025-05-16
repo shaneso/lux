@@ -10,7 +10,7 @@ In addition, immunotherapy can involve many kinds of cell types, including lymph
 
 ## Get started
 
-1. Go to the official [Lux website]().
+1. Go to the official [Lux website](https://luxsoftwareapp.web.app/).
 
 2. Download the app using the online link.
 
@@ -22,5 +22,5 @@ In addition, immunotherapy can involve many kinds of cell types, including lymph
 
 To learn more about Lux, see the following resources:
 
-- [Lux documentation](): The official Lux whitepaper document containing detailed explanations for each mathematical model used in the software.
-- [Lux tutorial](): Follow a step-by-step tutorial where you'll learn how to use the Lux mobile app.
+- [Lux documentation](https://luxsoftwareapp.web.app/whitepaper.pdf): The official Lux whitepaper document containing detailed explanations for each mathematical model used in the software.
+- [Lux tutorial](https://luxsoftwareapp.web.app/tutorial.html): Follow a step-by-step tutorial where you'll learn how to use the Lux mobile app.
