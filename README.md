@@ -4,51 +4,23 @@ Computational modeling can be an expensive task, especially for healthcare insti
 
 ## Introduction
 
-Lux is the first software program in the Luminosity project series. The main objective of Luminosity is to expose the uncertainties of cancer progression in the human body in order to minimize potential risks.
+Lux is the first software program in the Luminosity project series. The main objective of Luminosity is to expose the uncertainties of cancer progression in the human body in order to minimize potential risks. Tumor growth is complex and involves various factors that must be taken into consideration in order to accurately predict its development. Examples include the tumor microenvironment (TME) and angiogenesis. The intrinsic diversity present in cancer tissue, however, is effectively represented by spatial heterogeneity and biological entropy. This is why Lux was designed to analyze entropy values for gradient densities.
+
+In addition, immunotherapy can involve many kinds of cell types, including lymphocytes T and B, natural killer (NK) cells, and tumor-infiltrating lymphocytes (TILs). The first version of Lux has been programmed to model three case scenarios, which have been studied to be choice therapies for various tumor types. The combination of these growth factors can describe at the basic level how tumors mature and reduce with applied treatment plans.
 
 ## Get started
 
-1. Install dependencies
+1. Go to the official [Lux website]().
 
-   ```bash
-   npm install
-   ```
+2. Download the app using the online link.
 
-2. Start the app
+3. For Android devices, install the APK file on your phone.
 
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+4. After installing, open the app.
 
 ## Learn more
 
-To learn more about developing your project with Expo, look at the following resources:
+To learn more about Lux, see the following resources:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- [Lux documentation](): The official Lux whitepaper document containing detailed explanations for each mathematical model used in the software.
+- [Lux tutorial](): Follow a step-by-step tutorial where you'll learn how to use the Lux mobile app.
